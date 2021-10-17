@@ -1,4 +1,5 @@
-from typing import Any
+from typing import Union
+
 import numpy as np
 import numpy.typing as npt
 
@@ -43,7 +44,7 @@ class CellGrid():
         """
         return np.transpose(self.cells.nonzero())
 
-    def __getitem__(self, key) -> np.bool8:
+    def __getitem__(self, key) -> Union[np.bool8, npt.NDArray[np.bool8]]:
         return self.cells[key]
 
     def __setitem__(self, key, value) -> None:
