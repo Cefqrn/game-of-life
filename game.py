@@ -23,6 +23,7 @@ class Game:
         self.running = False
     
     def before_loop(self) -> None: pass
+    def on_loop(self) -> None: pass
 
     def on_event(self, event) -> None:
         """
@@ -36,5 +37,4 @@ class Game:
         while self.running:
             for event in pg.event.get():
                 self.on_event(event)
-                
             self.on_loop()

@@ -1,6 +1,6 @@
 from cell_grid import CellGrid
 from game import Game
- 
+
 import pygame as pg
 import numpy as np
 
