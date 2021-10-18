@@ -9,3 +9,5 @@ Implemented in Python with NumPy and Pygame
 * Right arrow: update the grid once
 * Space: Toggle updating the grid every frame
 * Escape: Exit
+* Left click: Revive cell
+* Right click: Kill cell
