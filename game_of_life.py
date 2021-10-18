@@ -56,7 +56,7 @@ class GameOfLife(Game):
     
     def toggle_updating(self) -> None:
         """
-        Stops the cell grid from updating every frame.
+        Toggles the cell grid updating every frame.
         """
         self.updating = not self.updating
 
