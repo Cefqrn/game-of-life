@@ -4,7 +4,7 @@ import numpy as np
 import numpy.typing as npt
 
 
-class CellGrid():
+class CellGrid:
     """
     A grid of cells.
     """
