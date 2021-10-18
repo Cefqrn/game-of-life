@@ -16,7 +16,7 @@ class Game:
 
         self.running = True
 
-    def kill(self, _) -> None:
+    def kill(self, *_) -> None:
         """
         Closes the game.
         """
