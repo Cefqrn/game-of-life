@@ -4,7 +4,6 @@ from game import Game
 import pygame as pg
 import numpy as np
 
-from functools import partial
 from math import floor
 
 LIVING_CELL_COLOR = pg.Color(0, 255, 0)
@@ -17,7 +16,6 @@ class GameOfLife(Game):
     def __init__(self, window_width: int, window_height: int, grid_width: int, grid_height: int, randomize: bool=False) -> None:
         super().__init__(window_width, window_height, "Game of Life")
         pg.event.set_allowed([pg.QUIT, pg.KEYDOWN, pg.MOUSEBUTTONDOWN])
-        self.screen.fill(DEAD_CELL_COLOR)
 
         self.cell_grid = CellGrid(grid_width, grid_height)
         self.cell_width = round(window_width/grid_width)
@@ -85,7 +83,7 @@ class GameOfLife(Game):
 
     def update(self) -> None:
         """
-        Redraws the screen
+        Redraws the screen.
         """
         self.screen.fill(DEAD_CELL_COLOR)
 
@@ -115,7 +113,7 @@ class GameOfLife(Game):
     
     def on_key_down(self, event: pg.event) -> None:
         """
-        Runs the function tied to the keybind in `self.keybinds`.
+        Calls the function associated to the pressed key.
         """
         self.keybinds.get(event.key, lambda: None)()
 

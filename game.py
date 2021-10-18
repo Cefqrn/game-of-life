@@ -18,7 +18,7 @@ class Game:
 
     def kill(self, _) -> None:
         """
-        Closes the game
+        Closes the game.
         """
         self.running = False
     
