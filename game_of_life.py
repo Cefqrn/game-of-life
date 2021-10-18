@@ -12,11 +12,11 @@ DEAD_CELL_COLOR = pg.Color(15, 15, 15)
 
 
 class GameOfLife(Game):
-    __slots__ = "screen", "running", "updating", "cell_grid", "cell_width", "cell_height", "keybinds"
+    __slots__ = "screen", "running", "updating", "cell_grid", "cell_width", "cell_height", "keybinds", "listeners"
 
     def __init__(self, window_width: int, window_height: int, grid_width: int, grid_height: int, randomize: bool=False) -> None:
         super().__init__(window_width, window_height, "Game of Life")
-        pg.event.set_allowed([pg.QUIT, pg.KEYDOWN, pg.KEYUP, pg.MOUSEBUTTONDOWN])
+        pg.event.set_allowed([pg.QUIT, pg.KEYDOWN, pg.MOUSEBUTTONDOWN])
         self.screen.fill(DEAD_CELL_COLOR)
 
         self.cell_grid = CellGrid(grid_width, grid_height)
@@ -31,6 +31,12 @@ class GameOfLife(Game):
             pg.K_r: self.randomize,
             pg.K_c: self.cell_grid.clear,
             pg.K_ESCAPE: self.kill
+        }
+
+        self.listeners = {
+            **self.listeners,
+            pg.MOUSEBUTTONDOWN: self.on_mouse_button_down,
+            pg.KEYDOWN: self.on_key_down
         }
 
         if randomize:
@@ -91,11 +97,12 @@ class GameOfLife(Game):
        
         pg.display.update()
 
-    def on_mouse_button_down(self, button: int) -> None:
+    def on_mouse_button_down(self, event) -> None:
         """
         If the user left clicks, the cell under the mouse is revived.
         If the user right clicks, the cell under the mouse is killed.
         """
+        button = event.button
         x, y = pg.mouse.get_pos()
         grid_x = floor(x/self.cell_width)
         grid_y = floor(y/self.cell_height)
@@ -106,11 +113,11 @@ class GameOfLife(Game):
 
         self.update()
     
-    def on_key_down(self, key: int) -> None:
+    def on_key_down(self, event: pg.event) -> None:
         """
         Runs the function tied to the keybind in `self.keybinds`.
         """
-        self.keybinds.get(key, lambda: None)()
+        self.keybinds.get(event.key, lambda: None)()
 
         self.update()
 
