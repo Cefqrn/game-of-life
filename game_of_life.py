@@ -66,7 +66,7 @@ class GameOfLife(Game):
         modified because a cell's neighbours include the cell itself.
         """
         # Can't seem to reshape the neighbors outside of here
-        updated_cells = self.cell_grid.cell_neighbors.reshape(self.cell_grid.width, self.cell_grid.height, -1).sum(2)
+        updated_cells = self.cell_grid.cell_neighbors.sum((3,2))
         
         # Cell stays the same if the cell has 4 neighbors
         self.cell_grid.cells &= updated_cells == 4
