@@ -14,7 +14,7 @@ DEAD_CELL_COLOR = pg.Color(15, 15, 15)
 class GameOfLife(Game):
     __slots__ = "screen", "running", "updating", "cell_grid", "cell_width", "cell_height", "keybinds"
 
-    def __init__(self, window_width: int, window_height: int, grid_width: int, grid_height: int, randomize: bool=True) -> None:
+    def __init__(self, window_width: int, window_height: int, grid_width: int, grid_height: int, randomize: bool=False) -> None:
         super().__init__(window_width, window_height, "Game of Life")
         pg.event.set_allowed([pg.QUIT, pg.KEYDOWN, pg.KEYUP, pg.MOUSEBUTTONDOWN])
         self.screen.fill(DEAD_CELL_COLOR)
