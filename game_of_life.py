@@ -15,6 +15,7 @@ class GameOfLife(Game):
 
     def __init__(self, window_width: int, window_height: int, grid_width: int, grid_height: int, randomize: bool=False) -> None:
         super().__init__(window_width, window_height, "Game of Life")
+        pg.event.set_blocked(None)
         pg.event.set_allowed([pg.QUIT, pg.KEYDOWN, pg.MOUSEBUTTONDOWN])
 
         self.cell_grid = CellGrid(grid_width, grid_height)
