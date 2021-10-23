@@ -8,7 +8,7 @@ class CellGrid:
     """
     A grid of cells.
     """
-    __slots__ = "cells", "width", "height", "cell_neighbors"
+    __slots__ = "cells", "cell_neighbors", "width", "height"
     
     def __init__(self, width: int, height: int) -> None:
         """

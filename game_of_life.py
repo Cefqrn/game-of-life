@@ -11,7 +11,7 @@ DEAD_CELL_COLOR = pg.Color(15, 15, 15)
 
 
 class GameOfLife(Game):
-    __slots__ = "screen", "running", "updating", "cell_grid", "cell_width", "cell_height", "keybinds", "listeners"
+    __slots__ = "updating", "cell_grid", "cell_width", "cell_height", "keybinds"
 
     def __init__(self, window_width: int, window_height: int, grid_width: int, grid_height: int, randomize: bool=False) -> None:
         super().__init__(window_width, window_height, "Game of Life")
@@ -122,7 +122,7 @@ class GameOfLife(Game):
 
     def before_loop(self) -> None:
         """
-        Updates the display before the main_loop.
+        Updates the display before the main loop.
         """
         self.update()
 

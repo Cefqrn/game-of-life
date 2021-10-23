@@ -2,7 +2,7 @@ import pygame as pg
 
 
 class Game:
-    __slots__ = "screen", "sprites", "running", "listeners"
+    __slots__ = "screen", "running", "listeners"
 
     def __init__(self, window_width: int, window_height: int, title: str) -> None:
         pg.init()
